@@ -8,10 +8,15 @@ import models.entities.Estagiario;
 import models.entities.Funcionario;
 import models.entities.Pessoa;
 
+import view.home;
+
 public class TrabalhoFinal {
 
     public static void main(String[] args) {
-        
+      
+        home Home = new home();
+        Home.setVisible(true);
+      
         ConnectionFactory conn =  new ConnectionFactory();
         conn.getConnection();
         
@@ -53,8 +58,8 @@ public class TrabalhoFinal {
         //FuncionarioDAO.update(2, funcionario3);
         //EstagiarioDAO.update(2, estagiario3);
        
-        //EstagiarioDAO.delete(1);
-        //FuncionarioDAO.delete(1);
+        //EstagiarioDAO.delete(2);
+        //FuncionarioDAO.delete(2);
     }
     
 }
