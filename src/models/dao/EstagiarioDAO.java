@@ -23,11 +23,24 @@ public class EstagiarioDAO {
         try {
             connection = ConnectionFactory.getConnection();
 
-            String query1 = "INSERT INTO estagiario (funcionario_id, bolsa, horas_servico) VALUES (?, ?, ?)";
-            psEstagiario = connection.prepareStatement(query1, Statement.RETURN_GENERATED_KEYS);
-            psEstagiario.setInt(1, estagiario.getFuncionario_id());
-            psEstagiario.setDouble(2, estagiario.getBolsa());
-            psEstagiario.setInt(3, estagiario.getHorasServico());
+            // Inserindo os dados na tabela estagiario
+            String query = "INSERT INTO estagiario (nome, idade, endereco, sexo, altura, telefone, registro, salario, bolsa, horas_servico) " +
+                           "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            psEstagiario = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+
+            // Setando os parâmetros do estagiário
+            psEstagiario.setString(1, estagiario.getNome());
+            psEstagiario.setInt(2, estagiario.getIdade());
+            psEstagiario.setString(3, estagiario.getEndereco());
+            psEstagiario.setString(4, String.valueOf(estagiario.getSexo()));  // Convertendo char para String
+            psEstagiario.setDouble(5, estagiario.getAltura());
+            psEstagiario.setString(6, estagiario.getTelefone());
+            psEstagiario.setInt(7, estagiario.getRegistro());
+            psEstagiario.setDouble(8, estagiario.getSalario());
+            psEstagiario.setDouble(9, estagiario.getBolsa());
+            psEstagiario.setInt(10, estagiario.getHorasServico());
+
+            // Executando a inserção
             psEstagiario.executeUpdate();
 
             ResultSet generatedKeys = psEstagiario.getGeneratedKeys();
@@ -35,30 +48,32 @@ public class EstagiarioDAO {
             if (generatedKeys.next()) {
                 id = generatedKeys.getInt(1);
             }
-            System.out.println("Estagiario adicionado com sucesso!");
+
+            System.out.println("Estagiário adicionado com sucesso!");
+
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Erro na inserção: " + e.getMessage());
         }
     }
 
-    public static void delete(int id) {
+    public static void delete(String nome) {
         Connection connection = null;
         PreparedStatement ps = null;
 
         try {
             connection = ConnectionFactory.getConnection();
 
-            String query = "DELETE FROM estagiario WHERE id= ?";
+            String query = "DELETE FROM estagiario WHERE nome= ?";
             ps = connection.prepareStatement(query);
-            ps.setInt(1, id);
+             ps.setString(1, nome);
             ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Erro ao deletar: " + e.getMessage());
         }
     }
-
+    
     public static void update(int id, Estagiario estagiario) {
         Connection connection = null;
         PreparedStatement psEstagiario = null;
@@ -68,7 +83,6 @@ public class EstagiarioDAO {
 
             String query = "UPDATE estagiario SET funcionario_id = ?, bolsa = ?, horas_servico = ? WHERE id = ?";
             psEstagiario = connection.prepareStatement(query);
-            psEstagiario.setInt(1, estagiario.getFuncionario_id());
             psEstagiario.setDouble(2, estagiario.getBolsa());
             psEstagiario.setInt(3, estagiario.getHorasServico());
             psEstagiario.setInt(4, id);
@@ -80,5 +94,47 @@ public class EstagiarioDAO {
             System.out.println("Erro na atualização: " + e.getMessage());
         }
     }
+    
+    public static Estagiario view(String nome) {
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Estagiario estagiario = null;
 
+        try {
+            connection = ConnectionFactory.getConnection();
+
+            // Consulta para buscar estagiário pelo nome
+            String query = "SELECT * FROM estagiario WHERE nome LIKE ?";
+            ps = connection.prepareStatement(query);
+            ps.setString(1, "%" + nome + "%");  // Usando LIKE para buscar por nome similar
+            rs = ps.executeQuery();
+
+            // Verifica se algum resultado foi encontrado
+            if (!rs.next()) {
+                System.out.println("Nenhum estagiário encontrado com o nome: " + nome);
+                return null;
+            }
+
+            // Criando o objeto Estagiario com os dados recuperados do banco
+            estagiario = new Estagiario(
+                rs.getString("nome"),
+                rs.getInt("idade"),
+                rs.getString("endereco"),
+                rs.getString("sexo").charAt(0),  // Convertendo o sexo de String para char
+                rs.getDouble("altura"),
+                rs.getString("telefone"),
+                rs.getInt("registro"),
+                rs.getDouble("salario"),
+                rs.getDouble("bolsa"),
+                rs.getInt("horas_servico")
+            );
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao buscar estagiário: " + e.getMessage());
+        }
+
+        return estagiario;
+    }
 }

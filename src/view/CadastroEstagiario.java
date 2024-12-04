@@ -8,8 +8,8 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-//import model.Estagiario;
-
+import models.entities.Estagiario;
+import models.dao.EstagiarioDAO;
 /**
  *
  * @author fezar
@@ -140,10 +140,10 @@ public class CadastroEstagiario extends javax.swing.JFrame {
         char sexo = JOptionPane.showInputDialog("Sexo (M/F):").charAt(0);
         float altura = Float.parseFloat(JOptionPane.showInputDialog("Altura:"));
         String telefone = JOptionPane.showInputDialog("Telefone:");
-        String registro = JOptionPane.showInputDialog("Registro:");
+        int registro = Integer.parseInt(JOptionPane.showInputDialog("Registro:"));
         float salario = Float.parseFloat(JOptionPane.showInputDialog("Salário:"));
         float bolsa = Float.parseFloat(JOptionPane.showInputDialog("Bolsa:"));
-        float horasServico = Float.parseFloat(JOptionPane.showInputDialog("Horas de Serviço:"));
+        int horasServico = Integer.parseInt(JOptionPane.showInputDialog("Horas de Serviço:"));
 
         // Verificação dos valores capturados
         System.out.println("Nome: " + nome);
@@ -157,63 +157,63 @@ public class CadastroEstagiario extends javax.swing.JFrame {
         System.out.println("Bolsa: (1 = SIM   0 = NÃO)" + bolsa);
         System.out.println("Horas de Servico: " + horasServico);
 
-       // Estagiario estagiario = new Estagiario(bolsa, horasServico, nome, idade, endereco, sexo, altura, telefone, registro, salario);
-       // model.CadastroEstagiario.salvarCadastro(estagiario);
+        Estagiario estagiario = new Estagiario(nome, idade, endereco, sexo, altura, telefone, registro, salario, bolsa, horasServico);
+        EstagiarioDAO.create(estagiario);
 
         JOptionPane.showMessageDialog(this, "Estagiário cadastrado com sucesso!");
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 
     private void botaoVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVisualizarActionPerformed
-  //  String nome = JOptionPane.showInputDialog("Informe o nome do estagiário a visualizar:");
-   // Estagiario estagiario = model.CadastroEstagiario.lerCadastro(nome);
+    String nome = JOptionPane.showInputDialog("Informe o nome do estagiário a visualizar:");
+    Estagiario estagiario = EstagiarioDAO.view(nome);
 
-  //  if (estagiario != null) {
+    if (estagiario != null) {
         // Criar um JPanel para exibir as informações
-   //     JPanel panel = new JPanel();
-    //    panel.setLayout(new GridLayout(0, 2)); // Layout para organizar os campos em duas colunas
-//
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(0, 2)); // Layout para organizar os campos em duas colunas
+
         // Adicionar JLabels e JTextFields para cada informação do estagiário
-   //     panel.add(new JLabel("Nome:"));
-    //    panel.add(new JLabel(estagiario.getNome()));
+        panel.add(new JLabel("Nome:"));
+        panel.add(new JLabel(estagiario.getNome()));
 
-     //   panel.add(new JLabel("Idade:"));
-     //   panel.add(new JLabel(String.valueOf(estagiario.getIdade())));
+        panel.add(new JLabel("Idade:"));
+        panel.add(new JLabel(String.valueOf(estagiario.getIdade())));
 
-      //  panel.add(new JLabel("Endereço:"));
-      //  panel.add(new JLabel(estagiario.getEndereco()));
+        panel.add(new JLabel("Endereço:"));
+        panel.add(new JLabel(estagiario.getEndereco()));
 
-      //  panel.add(new JLabel("Sexo:"));
-       // panel.add(new JLabel(String.valueOf(estagiario.getSexo())));
+        panel.add(new JLabel("Sexo:"));
+        panel.add(new JLabel(String.valueOf(estagiario.getSexo())));
 
-       // panel.add(new JLabel("Altura:"));
-      //  panel.add(new JLabel(String.valueOf(estagiario.getAltura())));
+        panel.add(new JLabel("Altura:"));
+        panel.add(new JLabel(String.valueOf(estagiario.getAltura())));
 
-       // panel.add(new JLabel("Telefone:"));
-       // panel.add(new JLabel(estagiario.getTelefone()));
+        panel.add(new JLabel("Telefone:"));
+        panel.add(new JLabel(estagiario.getTelefone()));
 
-       // panel.add(new JLabel("Registro:"));
-      //  panel.add(new JLabel(estagiario.getRegistro()));
+        panel.add(new JLabel("Registro:"));
+        panel.add(new JLabel(String.valueOf(estagiario.getRegistro())));
 
-       // panel.add(new JLabel("Salário:"));
-       // panel.add(new JLabel(String.valueOf(estagiario.getSalario())));
+        panel.add(new JLabel("Salário:"));
+        panel.add(new JLabel(String.valueOf(estagiario.getSalario())));
 
-      //  panel.add(new JLabel("Bolsa:"));
-      //  panel.add(new JLabel(String.valueOf(estagiario.getBolsa())));
+        panel.add(new JLabel("Bolsa:"));
+        panel.add(new JLabel(String.valueOf(estagiario.getBolsa())));
 
-      //  panel.add(new JLabel("Horas de Serviço:"));
-       // panel.add(new JLabel(String.valueOf(estagiario.getHorasServico())));
+        panel.add(new JLabel("Horas de Serviço:"));
+        panel.add(new JLabel(String.valueOf(estagiario.getHorasServico())));
 
         // Mostrar o JOptionPane com o JPanel personalizado
-        //JOptionPane.showMessageDialog(this, panel, "Cadastro de Estagiário", JOptionPane.INFORMATION_MESSAGE);
-    //} else {
-     //   JOptionPane.showMessageDialog(this, "Estagiário não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
-   // }
+        JOptionPane.showMessageDialog(this, panel, "Cadastro de Estagiário", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        JOptionPane.showMessageDialog(this, "Estagiário não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_botaoVisualizarActionPerformed
 
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
-    //    String nome = JOptionPane.showInputDialog("Informe o nome do cadastro a excluir:");
-      //  model.CadastroEstagiario.excluirCadastro(nome);
-      //  JOptionPane.showMessageDialog(this, "Cadastro excluído com sucesso!");
+        String nome = JOptionPane.showInputDialog("Informe o nome do cadastro a excluir:");
+        EstagiarioDAO.delete(nome);
+        JOptionPane.showMessageDialog(this, "Cadastro excluído com sucesso!");
     }//GEN-LAST:event_botaoExcluirActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed

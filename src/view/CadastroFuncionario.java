@@ -1,26 +1,24 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
 
-/**
- *
- * @author C2testenovo
- */
-
 import java.awt.GridLayout;
-import java.util.List;
 import javax.swing.JLabel;
-//import model.Funcionario;
-//import model.Estagiario;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import models.dao.FuncionarioDAO;
+import models.entities.Funcionario;
 
-public class CadastroFuncionario extends javax.swing.JInternalFrame {
+/**
+ *
+ * @author Leozera
+ */
+public class CadastroFuncionario extends javax.swing.JFrame {
 
     /**
-     * Creates new form CadastroFuncionario
+     * Creates new form TesteCadastroFuncionario
      */
     public CadastroFuncionario() {
         initComponents();
@@ -35,125 +33,112 @@ public class CadastroFuncionario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelCad = new javax.swing.JPanel();
+        PanelOptions = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
+        setUndecorated(true);
+        setResizable(false);
+
+        PanelOptions.setBackground(new java.awt.Color(255, 255, 255));
+        PanelOptions.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jButton1.setText("Cadastrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoCadastrar(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
         jButton2.setText("Visualizar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoVisualizar(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
         jButton3.setText("Excluir");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoExcluir(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout panelCadLayout = new javax.swing.GroupLayout(panelCad);
-        panelCad.setLayout(panelCadLayout);
-        panelCadLayout.setHorizontalGroup(
-            panelCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCadLayout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addContainerGap(78, Short.MAX_VALUE))
+        btnClose.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        btnClose.setText("X");
+        btnClose.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Funcionários");
+
+        javax.swing.GroupLayout PanelOptionsLayout = new javax.swing.GroupLayout(PanelOptions);
+        PanelOptions.setLayout(PanelOptionsLayout);
+        PanelOptionsLayout.setHorizontalGroup(
+            PanelOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelOptionsLayout.createSequentialGroup()
+                .addGap(189, 189, 189)
+                .addGroup(PanelOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PanelOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
+                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        panelCadLayout.setVerticalGroup(
-            panelCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCadLayout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addGroup(panelCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(157, Short.MAX_VALUE))
+        PanelOptionsLayout.setVerticalGroup(
+            PanelOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelOptionsLayout.createSequentialGroup()
+                .addGroup(PanelOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelOptionsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelOptionsLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel1)))
+                .addGap(56, 56, 56)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 117, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelOptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelOptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botaoExcluir(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluir
-        String nome = JOptionPane.showInputDialog("Informe o nome do cadastro a excluir:");
-        //model.CadastroFuncionario.excluirCadastro(nome);
-        JOptionPane.showMessageDialog(this, "Cadastro excluído com sucesso!");
-    }//GEN-LAST:event_botaoExcluir
-
-    private void botaoVisualizar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVisualizar
-        //String nome = JOptionPane.showInputDialog("Informe o nome do estagiário a visualizar:");
-        //Funcionario funcionario = model.CadastroFuncionario.lerCadastro(nome);
-
-       // if (funcionario != null) {
-            // Criar um JPanel para exibir as informações
-         //   JPanel panel = new JPanel();
-           // panel.setLayout(new GridLayout(0, 2)); // Layout para organizar os campos em duas colunas
-
-            // Adicionar JLabels e JTextFields para cada informação do estagiário
-           // panel.add(new JLabel("Nome:"));
-           // panel.add(new JLabel(funcionario.getNome()));
-
-//            panel.add(new JLabel("Idade:"));
-  //          panel.add(new JLabel(String.valueOf(funcionario.getIdade())));
-
-    //        panel.add(new JLabel("Endereço:"));
-      //      panel.add(new JLabel(funcionario.getEndereco()));
-
-          //  panel.add(new JLabel("Sexo:"));
-        //    panel.add(new JLabel(String.valueOf(funcionario.getSexo())));
-
-            //panel.add(new JLabel("Altura:"));
-//            panel.add(new JLabel(String.valueOf(funcionario.getAltura())));
-
-  //          panel.add(new JLabel("Telefone:"));
-    //        panel.add(new JLabel(funcionario.getTelefone()));
-
-      //      panel.add(new JLabel("Registro:"));
-       //     panel.add(new JLabel(funcionario.getRegistro()));
-
-       //     panel.add(new JLabel("Salário:"));
-       //     panel.add(new JLabel(String.valueOf(funcionario.getSalario())));
-
-            // Mostrar o JOptionPane com o JPanel personalizado
-         //   JOptionPane.showMessageDialog(this, panel, "Cadastro de Estagiário", JOptionPane.INFORMATION_MESSAGE);
-       // } else {
-        //    JOptionPane.showMessageDialog(this, "Estagiário não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
-        //}
-    }//GEN-LAST:event_botaoVisualizar
-
-    private void botaoCadastrar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrar
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nome = JOptionPane.showInputDialog("Nome:");
         int idade = Integer.parseInt(JOptionPane.showInputDialog("Idade:"));
         String endereco = JOptionPane.showInputDialog("Endereço:");
         char sexo = JOptionPane.showInputDialog("Sexo (M/F):").charAt(0);
         float altura = Float.parseFloat(JOptionPane.showInputDialog("Altura:"));
         String telefone = JOptionPane.showInputDialog("Telefone:");
-        String registro = JOptionPane.showInputDialog("Registro:");
+        int registro = Integer.parseInt(JOptionPane.showInputDialog("Registro:"));
         float salario = Float.parseFloat(JOptionPane.showInputDialog("Salário:"));
 
         // Verificação dos valores capturados
@@ -166,17 +151,69 @@ public class CadastroFuncionario extends javax.swing.JInternalFrame {
         System.out.println("Registro: " + registro);
         System.out.println("Salário: " + salario);
 
-        //Funcionario funcionario = new Funcionario(nome, idade, endereco, sexo, altura, telefone, registro, salario);
-        //model.CadastroFuncionario.salvarCadastro(funcionario);
+        Funcionario funcionario = new Funcionario(nome, idade, endereco, sexo, altura, telefone, registro, salario);
+        FuncionarioDAO.create(funcionario);
 
         JOptionPane.showMessageDialog(this, "Funcionário cadastrado com sucesso!");
-    }//GEN-LAST:event_botaoCadastrar
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String nome = JOptionPane.showInputDialog("Informe o nome do estagiário a visualizar:");
+        Funcionario funcionario = FuncionarioDAO.view(nome);
+
+        if (funcionario != null) {
+            // Criar um JPanel para exibir as informações
+            JPanel panel = new JPanel();
+            panel.setLayout(new GridLayout(0, 2)); // Layout para organizar os campos em duas colunas
+
+            // Adicionar JLabels e JTextFields para cada informação do estagiário
+            panel.add(new JLabel("Nome:"));
+            panel.add(new JLabel(funcionario.getNome()));
+
+            panel.add(new JLabel("Idade:"));
+            panel.add(new JLabel(String.valueOf(funcionario.getIdade())));
+
+            panel.add(new JLabel("Endereço:"));
+            panel.add(new JLabel(funcionario.getEndereco()));
+
+            panel.add(new JLabel("Sexo:"));
+            panel.add(new JLabel(String.valueOf(funcionario.getSexo())));
+
+            panel.add(new JLabel("Altura:"));
+            panel.add(new JLabel(String.valueOf(funcionario.getAltura())));
+
+            panel.add(new JLabel("Telefone:"));
+            panel.add(new JLabel(funcionario.getTelefone()));
+
+            panel.add(new JLabel("Registro:"));
+            panel.add(new JLabel(String.valueOf(funcionario.getRegistro())));
+
+            panel.add(new JLabel("Salário:"));
+            panel.add(new JLabel(String.valueOf(funcionario.getSalario())));
+
+            //Mostrar o JOptionPane com o JPanel personalizado
+            JOptionPane.showMessageDialog(this, panel, "Cadastro de Estagiário", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Estagiário não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       String nome = JOptionPane.showInputDialog("Informe o nome do cadastro a excluir:");
+       FuncionarioDAO.delete(nome);
+       JOptionPane.showMessageDialog(this, "Cadastro excluído com sucesso!");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PanelOptions;
+    private javax.swing.JButton btnClose;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JPanel panelCad;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -45,22 +45,64 @@ public class FuncionarioDAO {
         }
     }
 
-    public static void delete(int id) {
+    public static void delete(String nome) {
         Connection connection = null;
         PreparedStatement ps = null;
 
         try {
             connection = ConnectionFactory.getConnection();
 
-            String query = "DELETE FROM funcionario WHERE id= ?";
+            String query = "DELETE FROM funcionario WHERE nome= ?";
             ps = connection.prepareStatement(query);
-            ps.setInt(1, id);
+            ps.setString(1, nome);
             ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Erro ao deletar: " + e.getMessage());
         }
     }
+    
+    public static Funcionario view(String nome) {
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Funcionario funcionario = null;
+
+        try {
+            connection = ConnectionFactory.getConnection();
+
+            // Consulta para buscar funcionário pelo nome
+            String query = "SELECT * FROM funcionario WHERE nome LIKE ?";
+            ps = connection.prepareStatement(query);
+            ps.setString(1, "%" + nome + "%");  // Usando LIKE para buscar por nome similar
+            rs = ps.executeQuery();
+
+            // Verifica se algum resultado foi encontrado
+            if (!rs.next()) {
+                System.out.println("Nenhum funcionário encontrado com o nome: " + nome);
+                return null;
+            }
+
+            // Criando o objeto Funcionario com os dados recuperados do banco
+            funcionario = new Funcionario(
+                rs.getString("nome"),
+                rs.getInt("idade"),
+                rs.getString("endereco"),
+                rs.getString("sexo").charAt(0),  // Assume-se que sexo é um único caractere
+                rs.getDouble("altura"),
+                rs.getString("telefone"),
+                rs.getInt("registro"),
+                rs.getDouble("salario")
+            );
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao buscar funcionário: " + e.getMessage());
+        }
+
+        return funcionario;
+    }
+
 
     public static void update(int id, Funcionario funcionario) {
         Connection connection = null;

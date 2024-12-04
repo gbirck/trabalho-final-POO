@@ -30,15 +30,15 @@ public class TrabalhoFinal {
             12345, 10000.0
         );
         
-        Estagiario estagiario1 = new Estagiario(
-            "Maria Souza", 22, "Rua Y, 456", 'F', 1.65, "987654321",
-            54321, 1500.0, 1200.0, 30, 1
-        );
+        //Estagiario estagiario1 = new Estagiario(
+         //   "Maria Souza", 22, "Rua Y, 456", 'F', 1.65, "987654321",
+         //   54321, 1500.0, 1200.0, 30, 1
+        //);
         
-        Estagiario estagiario2 = new Estagiario(
-           "Joao Roberto", 22, "Rua Y, 456", 'M', 1.95, "987654321",
-            54321, 2200.0, 1600.0, 40, 2
-        );
+       // Estagiario estagiario2 = new Estagiario(
+       //    "Joao Roberto", 22, "Rua Y, 456", 'M', 1.95, "987654321",
+        //    54321, 2200.0, 1600.0, 40, 2
+       // );
         
         //FuncionarioDAO.create(funcionario1);
         //FuncionarioDAO.create(funcionario2);
@@ -50,11 +50,11 @@ public class TrabalhoFinal {
             1001, 2500.0
         );
         
-        Estagiario estagiario3 = new Estagiario(
-            "Maria Souza", 22, "Rua Y, 456", 'F', 1.65, "987654321",
-            54321, 1500.0, 1000.0, 44,2
-        );
-        
+       // Estagiario estagiario3 = new Estagiario(
+         //   "Maria Souza", 22, "Rua Y, 456", 'F', 1.65, "987654321",
+         //   54321, 1500.0, 1000.0, 44,2
+        //);
+       // 
         //FuncionarioDAO.update(2, funcionario3);
         //EstagiarioDAO.update(2, estagiario3);
        

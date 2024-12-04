@@ -2,7 +2,7 @@ package view;
 
 import view.CadastroEstagiario;
 //import view.Restaurante;
-import view.TesteCadastroFuncionario;
+import view.CadastroFuncionario;
 
 public class home extends javax.swing.JFrame {
 
@@ -125,7 +125,7 @@ public class home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnFuncCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnFuncCadActionPerformed
-        TesteCadastroFuncionario tela = new TesteCadastroFuncionario();
+        CadastroFuncionario tela = new CadastroFuncionario();
         tela.setVisible(true);
     }//GEN-LAST:event_mnFuncCadActionPerformed
 
