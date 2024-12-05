@@ -38,6 +38,9 @@ public class CadastroEstagiario extends javax.swing.JFrame {
         botaoVisualizar = new javax.swing.JButton();
         botaoCadastrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -45,9 +48,13 @@ public class CadastroEstagiario extends javax.swing.JFrame {
         setResizable(false);
 
         PanelImg.setBackground(new java.awt.Color(255, 255, 255));
-        PanelImg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        PanelImg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        PanelImg.setPreferredSize(new java.awt.Dimension(550, 363));
+        PanelImg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnClose.setBackground(new java.awt.Color(255, 0, 0));
         btnClose.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        btnClose.setForeground(new java.awt.Color(255, 255, 255));
         btnClose.setText("X");
         btnClose.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -55,68 +62,81 @@ public class CadastroEstagiario extends javax.swing.JFrame {
                 btnCloseActionPerformed(evt);
             }
         });
+        PanelImg.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 8, 35, 27));
 
+        botaoExcluir.setBackground(new java.awt.Color(0, 153, 153));
+        botaoExcluir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        botaoExcluir.setForeground(new java.awt.Color(255, 255, 255));
         botaoExcluir.setText("Excluir");
         botaoExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoExcluirActionPerformed(evt);
             }
         });
+        PanelImg.add(botaoExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 209, 35));
 
+        botaoVisualizar.setBackground(new java.awt.Color(0, 153, 153));
+        botaoVisualizar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        botaoVisualizar.setForeground(new java.awt.Color(255, 255, 255));
         botaoVisualizar.setText("Visualizar");
         botaoVisualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoVisualizarActionPerformed(evt);
             }
         });
+        PanelImg.add(botaoVisualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 209, 38));
 
+        botaoCadastrar.setBackground(new java.awt.Color(0, 153, 153));
+        botaoCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        botaoCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         botaoCadastrar.setText("Cadastrar");
         botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoCadastrarActionPerformed(evt);
             }
         });
+        PanelImg.add(botaoCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 209, 35));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(0, 153, 153));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 153, 153));
         jLabel1.setText("Estagiário");
+        PanelImg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1, -1));
 
-        javax.swing.GroupLayout PanelImgLayout = new javax.swing.GroupLayout(PanelImg);
-        PanelImg.setLayout(PanelImgLayout);
-        PanelImgLayout.setHorizontalGroup(
-            PanelImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelImgLayout.createSequentialGroup()
-                .addGroup(PanelImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelImgLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelImgLayout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(PanelImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botaoVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botaoCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 80, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(PanelImgLayout.createSequentialGroup()
-                .addGap(121, 121, 121)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        PanelImgLayout.setVerticalGroup(
-            PanelImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelImgLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
-                .addGap(45, 45, 45)
-                .addComponent(botaoCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botaoVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(118, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        PanelImg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, -1));
+
+        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        PanelImg.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 50));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Estagiario.jpg"))); // NOI18N
+        PanelImg.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, 220));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -126,7 +146,7 @@ public class CadastroEstagiario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(PanelImg, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
         );
 
         pack();
@@ -262,5 +282,8 @@ public class CadastroEstagiario extends javax.swing.JFrame {
     private javax.swing.JButton botaoVisualizar;
     private javax.swing.JButton btnClose;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
