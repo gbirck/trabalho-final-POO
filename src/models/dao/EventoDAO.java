@@ -27,7 +27,7 @@ public class EventoDAO {
     }
 
     public static Evento view(String nome) {
-        String query = "SELECT * FROM funcionario WHERE nome LIKE ?";
+        String query = "SELECT * FROM evento WHERE nome LIKE ?";
         Evento evento = null;
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -41,14 +41,14 @@ public class EventoDAO {
                         rs.getInt("dia"),
                         rs.getInt("hora")
                     );
-                    System.out.println("Funcionario encontrado: " + evento.getNome());
+                    System.out.println("Evento encontrado: " + evento.getNome());
                 } else {
-                    System.out.println("Nenhum eventoo encontrado com o nome: " + nome);
+                    System.out.println("Nenhum evento encontrado com o nome: " + nome);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Erro ao buscar funcionário: " + e.getMessage());
+            System.out.println("Erro ao buscar evento: " + e.getMessage());
         }
 
         return evento;
@@ -59,7 +59,7 @@ public class EventoDAO {
         String query = "INSERT INTO evento (nome, dia, hora) VALUES (?, ?, ?)";
         
         try (Connection connection = (Connection) ConnectionFactory.getConnection();
-             PreparedStatement psFuncionario = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement psEvento = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             
             psEvento.setString(1, evento.getNome());
             psEvento.setInt(2, evento.getDia());
@@ -74,28 +74,6 @@ public class EventoDAO {
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Erro na inserção: " + e.getMessage());
-        }
-    }
-
-    private static class psEvento {
-
-        private static void setString(int i, String nome) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        private static void setInt(int i, int dia) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        private static void executeUpdate() {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        private static ResultSet getGeneratedKeys() {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        public psEvento() {
         }
     }
 }
