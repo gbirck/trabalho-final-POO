@@ -51,6 +51,15 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- Copiando estrutura para tabela trabalho_final.evento
+CREATE TABLE IF NOT EXISTS `evento` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `dia` int NOT NULL,
+  `hora` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- Copiando dados para a tabela trabalho_final.funcionario: ~0 rows (aproximadamente)
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
@@ -58,3 +67,4 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
+

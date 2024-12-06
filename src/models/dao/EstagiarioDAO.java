@@ -74,27 +74,6 @@ public class EstagiarioDAO {
         }
     }
     
-    public static void update(int id, Estagiario estagiario) {
-        Connection connection = null;
-        PreparedStatement psEstagiario = null;
-
-        try {
-            connection = ConnectionFactory.getConnection();
-
-            String query = "UPDATE estagiario SET funcionario_id = ?, bolsa = ?, horas_servico = ? WHERE id = ?";
-            psEstagiario = connection.prepareStatement(query);
-            psEstagiario.setDouble(2, estagiario.getBolsa());
-            psEstagiario.setInt(3, estagiario.getHorasServico());
-            psEstagiario.setInt(4, id);
-            psEstagiario.executeUpdate();
-
-            System.out.println("Estagiario atualizado com sucesso!");
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Erro na atualização: " + e.getMessage());
-        }
-    }
-    
     public static Estagiario view(String nome) {
         Connection connection = null;
         PreparedStatement ps = null;
